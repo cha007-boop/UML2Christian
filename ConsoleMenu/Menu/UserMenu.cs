@@ -60,8 +60,8 @@ namespace ConsoleMenu.Menu
                         break;
                     case "5":
                         Console.WriteLine("Choice 5");
-                        AddCustomerController addMenuItemController = new AddCustomerController(_customerRepository);
-                        addMenuItemController.AddCustomer();
+                        AddCustomerController addCustomerController = new AddCustomerController(_customerRepository);
+                        addCustomerController.AddCustomer();
                         break;
                     case "6":
                         Console.WriteLine("Choice 6");
