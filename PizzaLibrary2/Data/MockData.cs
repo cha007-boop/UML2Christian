@@ -17,7 +17,6 @@ namespace PizzaLibrary.Data
             { "13131313", new Customer("Charlotte", "13131313", "Avenue 321") },
             { "14141414", new Customer("Carina", "14141414", "High Street 234") },
             { "15151515", new Customer("Muhammed", "15151515", "North Street 345") },
-            { "00000000", new Customer("Guest", "00000000", "Guest") }
             };
 
         private static List<MenuItem> _menuItemData =
