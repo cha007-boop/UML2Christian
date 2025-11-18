@@ -26,7 +26,7 @@ namespace ConsoleMenu.Controllers.Customers
                 try
                 {
                     string mobile = InputHandling.RestrictedLengthString("Enter mobile of customer to update: ", 8, 8);
-                    Customer customerToUpdate = _customers.GetCustomerByMobile(mobile);
+                    Customer? customerToUpdate = _customers.GetCustomerByMobile(mobile);
                     if (customerToUpdate == null)
                         throw new CustomerDoesNotExist("No customer found.");
 

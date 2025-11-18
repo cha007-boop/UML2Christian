@@ -2,7 +2,7 @@
 
 namespace PizzaLibrary.Models
 {
-    public class Customer: ICustomer
+    public class Customer: ICustomer, IComparable<Customer>
     {
         #region Constants
 
@@ -33,9 +33,17 @@ namespace PizzaLibrary.Models
         public string Address { get; set; }
         public bool ClubMember { get; set; }
         public int Id { get { return _id; } }
+
+        public int CompareTo(Customer? otherCustomer)
+        {
+            if (otherCustomer is null)
+                return 1;
+            return Id.CompareTo(otherCustomer.Id);
+        }
         #endregion
 
         #region Methods
+
         public override string ToString()
         {
             return $"{Id} {Name} {Mobile} {Address} Is{(ClubMember? " ": " not ")}a Club member";

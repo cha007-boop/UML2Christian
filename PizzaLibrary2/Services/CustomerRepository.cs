@@ -47,7 +47,9 @@ namespace PizzaLibrary.Services
 
         public List<Customer> GetAll()
         {
-            return _customers.Values.ToList();
+            List<Customer> sortedList = _customers.Values.ToList();
+            sortedList.Sort();
+            return sortedList;
         }
 
         public Customer? GetCustomerByMobile(string mobile)
