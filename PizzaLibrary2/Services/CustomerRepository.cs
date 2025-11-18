@@ -67,6 +67,26 @@ namespace PizzaLibrary.Services
         {
             _customers.Remove(mobile);
         }
+
+        public void UpdateCustomerInfo(string mobile, string name, string address, string newMobile, bool clubMember)
+        {
+            if (_customers.ContainsKey(mobile))
+            {
+                _customers[mobile].Name = name;
+                _customers[mobile].Address = address;
+                _customers[mobile].ClubMember = clubMember;
+                if (mobile != newMobile)
+                {
+                    _customers[mobile].Mobile = newMobile;
+                    AddCustomer(_customers[mobile]);
+                    RemoveCustomer(mobile);
+                }
+            }
+            else
+            {
+                throw new CustomerDoesNotExist($"Customer with mobile number {mobile} not found.");
+            }
+        }
         #endregion
 
         #region Get methods
