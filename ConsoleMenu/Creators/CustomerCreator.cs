@@ -12,20 +12,17 @@ namespace ConsoleMenu.Creators
             bool customerCreated = false;
             Customer customer = null;
             bool VIP = InputHandling.YesOrNo("Create as VIP? ");
-            Console.Write("Set name: ");
-            string customerName = Console.ReadLine();
+            string customerName = InputHandling.RestrictedLengthString("Set customer name: ", 3);
             while (!customerCreated)
             {
                 try
                 {
-                    Console.Write("Set phone number: ");
-                    string mobile = Console.ReadLine();
+                    string mobile = InputHandling.RestrictedLengthString("Set mobile number: ", 8, 8);
                     if (customerRepository.GetCustomerByMobile(mobile) != null)
                     {
                         throw new CustomerMobileNumberExist($"Customer with mobile {mobile} already exists.");
                     }
-                    Console.Write("Set address: ");
-                    string address = Console.ReadLine();
+                    string address = InputHandling.RestrictedLengthString("Set address: ", 1);
                     if (VIP)
                     {
                         int discount = InputHandling.Discount();

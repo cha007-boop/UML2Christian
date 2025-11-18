@@ -7,9 +7,9 @@ namespace ConsoleMenu.Creators
     {
         public static MenuItem Create()
         {
-            string name = InputHandling.MinimumLengthString("Set name: ", 2);
+            string name = InputHandling.RestrictedLengthString("Set name: ", 2);
             double price = InputHandling.Price();
-            string description = InputHandling.MinimumLengthString(name + " description: ", 5);
+            string description = InputHandling.RestrictedLengthString(name + " description: ", 5);
             MenuType menuType = InputHandling.MenuTypeFromInt();
 
             return new MenuItem(name, price, description, menuType);

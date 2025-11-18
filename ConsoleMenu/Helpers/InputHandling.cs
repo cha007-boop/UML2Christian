@@ -154,7 +154,7 @@ namespace ConsoleMenu.Helpers
             }
             return discount;
         }
-        public static string MinimumLengthString(string prompt, int minLength)
+        public static string RestrictedLengthString(string prompt, int minLength, int maxLength = 400)
         {
             string input = "";
             bool validString = false;
@@ -166,6 +166,8 @@ namespace ConsoleMenu.Helpers
                     input = Console.ReadLine();
                     if (input.Length < minLength)
                         throw new ArgumentException($"Input must be at least {minLength} characters long");
+                    if (input.Length > maxLength)
+                        throw new ArgumentException($"Input must be at most {maxLength} characters long");
                     validString = true;
                 }
                 catch (ArgumentException aex)
