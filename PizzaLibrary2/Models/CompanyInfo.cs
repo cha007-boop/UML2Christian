@@ -14,13 +14,11 @@ namespace PizzaLibrary.Models
         public string Name { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }
-        public string City { get; set; }
         private CompanyInfo()
         {
-            Name = "Default Pizza Company";
-            Address = "123 Pizza St.";
-            Phone = "555-1234";
-            City = "Pizzatown";
+            Name = "Big Mamma";
+            Address = "Frederiksværksgade 4 3400 Hillerød";
+            Phone = "40 12 40 03";
         }
         public static CompanyInfo GetInstance()
         {
