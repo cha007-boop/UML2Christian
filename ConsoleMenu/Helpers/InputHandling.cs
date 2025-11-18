@@ -154,6 +154,31 @@ namespace ConsoleMenu.Helpers
             }
             return discount;
         }
+        public static string MinimumLengthString(string prompt, int minLength)
+        {
+            string input = "";
+            bool validString = false;
+            while (!validString)
+            {
+                Console.Write(prompt);
+                try
+                {
+                    input = Console.ReadLine();
+                    if (input.Length < minLength)
+                        throw new ArgumentException($"Input must be at least {minLength} characters long");
+                    validString = true;
+                }
+                catch (ArgumentException aex)
+                {
+                    Console.WriteLine(aex.Message);
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Input was not valid");
+                }
+            }
+            return input;
+        }
 
         public static MenuType MenuTypeFromInt()
         {
