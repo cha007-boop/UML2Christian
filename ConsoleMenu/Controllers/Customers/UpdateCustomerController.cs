@@ -31,16 +31,18 @@ namespace ConsoleMenu.Controllers.Customers
                         throw new CustomerDoesNotExist("No customer found.");
 
                     Console.WriteLine("Leave input blank for no change");
+                    Console.Write("Mobile: ");
+                    string updatedMobile = InputHandling.UpdateInfo(customerToUpdate.Mobile);
+                    if (_customers.GetCustomerByMobile(updatedMobile) != null)
+                        throw new CustomerMobileNumberExist("Mobile number already used");
+
                     Console.Write("Name: ");
-                    string updatedName = Console.ReadLine() ?? customerToUpdate.Name;
+                    string updatedName = InputHandling.UpdateInfo(customerToUpdate.Name);
 
                     Console.Write("Address: ");
-                    string updatedAddress = Console.ReadLine() ?? customerToUpdate.Address;
-                    
-                    bool clubMember = InputHandling.YesOrNo("Club member?");
+                    string updatedAddress = InputHandling.UpdateInfo(customerToUpdate.Address);
 
-                    Console.Write("Mobile: ");
-                    string updatedMobile = Console.ReadLine() ?? customerToUpdate.Mobile;
+                    bool clubMember = InputHandling.YesOrNo("Club member?");
 
                     _customers.UpdateCustomerInfo(mobile, updatedName, updatedAddress, clubMember, updatedMobile);
                     customerUpdated = true;
@@ -49,6 +51,11 @@ namespace ConsoleMenu.Controllers.Customers
                 catch (CustomerDoesNotExist cdnex)
                 {
                     Console.WriteLine(cdnex.Message);
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
                 }
             }
         }

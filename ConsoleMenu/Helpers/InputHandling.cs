@@ -294,5 +294,10 @@ namespace ConsoleMenu.Helpers
             }
             return input[0] == 'y';
         }
+        public static string UpdateInfo(string oldInfo)
+        {
+            string newInfo = Console.ReadLine();
+            return newInfo.Length == 0 ? oldInfo : newInfo;
+        }
     }
 }
