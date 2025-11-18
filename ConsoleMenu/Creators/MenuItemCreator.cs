@@ -7,14 +7,12 @@ namespace ConsoleMenu.Creators
     {
         public static MenuItem Create()
         {
-            Console.Write("Set name: ");
-            string pizzaName = Console.ReadLine();
-            double pizzaPrice = InputHandling.Price();
-            Console.Write("Set description: ");
-            string pizzaDescription = Console.ReadLine();
+            string name = InputHandling.MinimumLengthString("Set name: ", 2);
+            double price = InputHandling.Price();
+            string description = InputHandling.MinimumLengthString(name + " description: ", 5);
             MenuType menuType = InputHandling.MenuTypeFromInt();
 
-            return new MenuItem(pizzaName, pizzaPrice, pizzaDescription, menuType);
+            return new MenuItem(name, price, description, menuType);
         }
     }
 }
