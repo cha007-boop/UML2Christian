@@ -68,7 +68,7 @@ namespace PizzaLibrary.Services
             _customers.Remove(mobile);
         }
 
-        public void UpdateCustomerInfo(string mobile, string name, string address, string newMobile, bool clubMember)
+        public void UpdateCustomerInfo(string mobile, string name, string address, bool clubMember, string newMobile)
         {
             if (_customers.ContainsKey(mobile))
             {

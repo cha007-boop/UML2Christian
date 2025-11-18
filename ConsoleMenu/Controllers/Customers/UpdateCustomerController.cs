@@ -42,7 +42,8 @@ namespace ConsoleMenu.Controllers.Customers
                     Console.Write("Mobile: ");
                     string updatedMobile = Console.ReadLine() ?? customerToUpdate.Mobile;
 
-                    _customers.UpdateCustomer(mobile, updatedName, updatedAddress, clubMember, updatedMobile);
+                    _customers.UpdateCustomerInfo(mobile, updatedName, updatedAddress, clubMember, updatedMobile);
+                    customerUpdated = true;
 
                 }
                 catch (CustomerDoesNotExist cdnex)
