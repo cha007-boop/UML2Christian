@@ -111,14 +111,17 @@ namespace PizzaLibrary.Services
             return Filter.FilterObj(GetAll(), m => m.TheMenuType == menuType);
         }
 
+        public List<MenuItem> GetMostExpensive(List<MenuItem> menuItems)
+        {
+            double highestPrice = menuItems.Select(m => m.Price).Max();
+
+            return Filter.FilterObj(menuItems, m => m.Price == highestPrice);
+        }
+        
         public List<MenuItem> GetMostExpensiveOfMenuType(MenuType menuType)
         {
             List<MenuItem> allOfType = GetAllOfType(menuType);
-            if (allOfType.Count == 0)
-                return [];
-
-            double highestPrice = allOfType.Select(m => m.Price).Max();
-            return Filter.FilterObj(allOfType, m => m.Price == highestPrice);
+            return GetMostExpensive(allOfType);
         }
 
         public List<MenuItem> GetMostExpensivePizza()
