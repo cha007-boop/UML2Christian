@@ -167,7 +167,9 @@ namespace ConsoleMenu.Helpers
             }
             while (!choiceFinalized)
             {
+                Console.WriteLine("Menu types:");
                 Console.WriteLine(menuTypesString);
+                Console.Write("Select Menu Type by number: ");
                 try
                 {
                     int input = int.Parse(Console.ReadLine());
@@ -246,7 +248,7 @@ namespace ConsoleMenu.Helpers
             bool choiceFinalized = false;
             while (!choiceFinalized)
             {
-                Console.Write($"{question}[ y / n ]: ");
+                Console.Write($"{question} [ y / n ]: ");
                 try
                 {
                     input = Console.ReadLine().ToLower();

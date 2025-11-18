@@ -10,7 +10,7 @@ namespace ConsoleMenu.Creators
             Console.Write("Set name: ");
             string pizzaName = Console.ReadLine();
             double pizzaPrice = InputHandling.Price();
-            Console.WriteLine("Set description");
+            Console.Write("Set description: ");
             string pizzaDescription = Console.ReadLine();
             MenuType menuType = InputHandling.MenuTypeFromInt();
 
