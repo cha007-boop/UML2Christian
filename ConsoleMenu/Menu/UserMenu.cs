@@ -24,6 +24,8 @@ namespace ConsoleMenu.Menu
         private static string ReadChoice(string choices)
         {
             Console.Clear();
+            Console.WriteLine("\x1b[3J");
+            Console.Clear();
             Console.Write(choices);
             string choice = Console.ReadLine();
             Console.Clear();
