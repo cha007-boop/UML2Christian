@@ -125,6 +125,11 @@ namespace PizzaLibrary.Services
         {
             return GetMostExpensiveOfMenuType(MenuType.PIZZECLASSSICHE);
         }
+
+        public List<MenuItem> GetInPriceRange(double min, double max)
+        {
+            return Filter.FilterObj(GetAll(), m => m.Price >= min && m.Price <= max);
+        }
         #endregion
     }
 
