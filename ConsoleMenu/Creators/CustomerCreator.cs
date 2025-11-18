@@ -11,6 +11,7 @@ namespace ConsoleMenu.Creators
         {
             bool customerCreated = false;
             Customer customer = null;
+            bool VIP = InputHandling.YesOrNo("Create as VIP? ");
             Console.Write("Set name: ");
             string customerName = Console.ReadLine();
             while (!customerCreated)
@@ -25,8 +26,16 @@ namespace ConsoleMenu.Creators
                     }
                     Console.Write("Set address: ");
                     string address = Console.ReadLine();
-                    bool isClubMember = InputHandling.YesOrNo("Wish to be a club member? ");
-                    customer = new Customer(customerName, mobile, address, isClubMember);
+                    if (VIP)
+                    {
+                        int discount = InputHandling.Discount();
+                        customer = new VIPCustomer(customerName, mobile, address, discount);
+                    }
+                    else
+                    {
+                        bool isClubMember = InputHandling.YesOrNo("Wish to be a club member? ");
+                        customer = new Customer(customerName, mobile, address, isClubMember);
+                    }
                     customerCreated = true;
                 }
                 catch (CustomerMobileNumberExist cmne)

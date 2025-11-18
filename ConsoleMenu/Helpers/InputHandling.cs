@@ -123,6 +123,38 @@ namespace ConsoleMenu.Helpers
             return price;
         }
 
+        public static int Discount()
+        {
+            int discount = 0;
+            bool validDiscount = false;
+            while (!validDiscount)
+            {
+                Console.Write("Select VIP discount: ");
+                try
+                {
+                    discount = int.Parse(Console.ReadLine());
+                    if (discount < 1)
+                        throw new TooLowDiscountException("Discount must be at least 1");
+                    else if (discount > 25)
+                        throw new TooHighDiscountException("Discount must at most 25");
+                    validDiscount = true;
+                }
+                catch (TooLowDiscountException tldex)
+                {
+                    Console.WriteLine(tldex.Message);
+                }
+                catch (TooHighDiscountException thdex)
+                {
+                    Console.WriteLine(thdex.Message);
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Input must be an integer in the range 1..25");
+                }
+            }
+            return discount;
+        }
+
         public static MenuType MenuTypeFromInt()
         {
             MenuType menuType = MenuType.PIZZECLASSSICHE; // Value to be overwritten
